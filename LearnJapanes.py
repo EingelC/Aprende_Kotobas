@@ -10,7 +10,7 @@ from PIL import ImageTk, Image
 class Read_Write_Seen:
     #En un archivo verificamos aquellas palabras marcadas como vistas
     def Read_Seen():
-        Aprendida = open("C:/Program Files/Aprende Kotobas/Dataset/KotobaVista.dat", "r")
+        Aprendida = open("C:/Users/Eingel/Documents/Angel/Aprende_Kotobas/Dataset/KotobaVista.dat", "r")
         Lineas = []
         for x in range(7831):
             valor = Aprendida.readline()
@@ -21,10 +21,14 @@ class Read_Write_Seen:
         return Lineas
     #Aqui podemos reiniciar el archivo que guarda las palabras vistas
     def Reset_Seen():
-        Archivo = open("C:/Program Files/Aprende Kotobas/Dataset/KotobaVista.dat", "w")
+        Archivo = open("C:/Users/Eingel/Documents/Angel/Aprende_Kotobas/Dataset/KotobaVista.dat", "w")
         for z in range(7831):
             Archivo.write("0" + "\n")
         Archivo.close()
+
+reset = bool(False)
+if (reset == True):
+    Read_Write_Seen.Reset_Seen()
 
 vistos = Read_Write_Seen.Read_Seen()
 print(vistos)
@@ -43,7 +47,7 @@ for y in range(7831):
 KanjiVisto[i] = 1
 KotobaVista[j] = 1
 
-vista = open("C:/Program Files/Aprende Kotobas/Dataset/KotobaVista.dat", "w")
+vista = open("C:/Users/Eingel/Documents/Angel/Aprende_Kotobas/Dataset/KotobaVista.dat", "w")
 
 for z in range(7831):
     for a in range(len(vistos)):
@@ -65,7 +69,7 @@ prompt.place(x=10, y=450)
 lmain = ctk.CTkLabel(master=app, height=512, width=512)
 lmain.place(x=10,y=500)
 
-image1 = Image.open("C:/Program Files/Aprende Kotobas/Images/ことば.jpg")
+image1 = Image.open("C:/Users/Eingel/Documents/Angel/Aprende_Kotobas/Images/ことば.jpg")
 image1 = image1.resize((450,450), Image.ANTIALIAS)
 test = ImageTk.PhotoImage(image1)
 label1 = tk.Label(image=test)
@@ -76,14 +80,14 @@ trigger = ctk.CTkButton(master=app, height=40, width=120, fg_color="white", text
 trigger.configure(text="Nueva Kotoba")
 trigger.place(x=206, y=500)
 
-JapVob = read_csv("C:/Program Files/Aprende Kotobas/Dataset/Japanese_Vocabolary_Dataset.csv")
+JapVob = read_csv("C:/Users/Eingel/Documents/Angel/Aprende_Kotobas/Dataset/Japanese_Vocabolary_Dataset.csv")
 HiraganaKotoba = JapVob['Hiragana'].tolist()
 RomajiKotoba = JapVob['Romaji'].tolist()
 KanjiKotoba = JapVob['Kanji'].tolist()
 EnglishKotoba = JapVob['English_Meaning'].tolist()
 ExampleKotoba = JapVob['Example'].tolist()
 
-KanjiVob = read_csv("C:/Program Files/Aprende Kotobas/Dataset/Kanji_Levels.csv")
+KanjiVob = read_csv("C:/Users/Eingel/Documents/Angel/Aprende_Kotobas/Dataset/Kanji_Levels.csv")
 KanjiKanji = KanjiVob['kanji'].tolist()
 OnKanji = KanjiVob['on'].tolist()
 OnRomajiKanji = KanjiVob['romaji on'].tolist()
